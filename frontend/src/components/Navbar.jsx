@@ -1,10 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useCart } from "../context/CardContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { itemCount } = useCart();
 
   const links = [
     { to: "/", label: "Home" },
@@ -23,9 +25,8 @@ export default function Navbar() {
             <Link
               key={l.to}
               to={l.to}
-              className={`text-sm font-medium transition-colors ${
-                location.pathname === l.to ? "text-ember" : "text-ink/70 hover:text-ink"
-              }`}
+              className={`text-sm font-medium transition-colors ${location.pathname === l.to ? "text-ember" : "text-ink/70 hover:text-ink"
+                }`}
             >
               {l.label}
             </Link>
@@ -39,7 +40,14 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <ShoppingBag size={20} className="text-ink/70 hidden md:block" />
+          <Link to="/cart" className="relative">
+            <ShoppingBag size={20} className="text-ink/70" />
+            {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-ember text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
+          </Link>
           <button className="md:hidden" onClick={() => setOpen(!open)}>
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>

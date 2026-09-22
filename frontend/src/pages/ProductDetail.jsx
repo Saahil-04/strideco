@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import client from "../api/client";
+import { useCart } from "../context/CardContext";
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -8,6 +9,7 @@ export default function ProductDetail() {
   const [size, setSize] = useState(null);
   const [added, setAdded] = useState(false);
   const [notFound, setNotFound] = useState(false);
+  const { addItem } = useCart();
 
   useEffect(() => {
     client
@@ -37,25 +39,14 @@ export default function ProductDetail() {
   // demonstrate the order flow and feed the admin analytics.
   const handleAddToCart = async () => {
     try {
-      await client.post("/orders", {
-        customerName: "Demo Customer",
-        customerEmail: "demo@example.com",
-        items: [
-          {
-            product: product._id,
-            name: product.name,
-            price: product.price,
-            size,
-            quantity: 1,
-          },
-        ],
-      });
+      addItem(product, size, 1);
       setAdded(true);
       setTimeout(() => setAdded(false), 2500);
     } catch (err) {
       console.error(err);
     }
   };
+
 
   return (
     <div className="max-w-6xl mx-auto px-5 py-12 grid md:grid-cols-2 gap-12">
