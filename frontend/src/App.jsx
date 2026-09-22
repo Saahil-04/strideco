@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Landing from "./pages/Landing";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
-import Cart from "./pages/Card"
+import Cart from "./pages/Cart"
 import OrderConfirmed from "./pages/OrderConfirmed";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";

@@ -34,8 +34,7 @@ export default function ProductDetail() {
 
   if (!product) return <div className="max-w-6xl mx-auto px-5 py-24 text-ink/40">Loading...</div>;
 
-  // Simple client-side "add to cart" simulation — a real cart/checkout is out of
-  // scope for this task, so this just calls the order endpoint directly to
+  // Simple client-side "add to cart" simulation — so this just calls the order endpoint directly to
   // demonstrate the order flow and feed the admin analytics.
   const handleAddToCart = async () => {
     try {
@@ -57,7 +56,7 @@ export default function ProductDetail() {
       <div>
         <p className="text-xs uppercase tracking-wide text-ink/40 mb-2">{product.category}</p>
         <h1 className="font-display text-3xl font-bold text-ink mb-2">{product.name}</h1>
-        <p className="text-xl text-ink/80 mb-6">${product.price.toFixed(2)}</p>
+        <p className="text-xl text-ink/80 mb-6">₹{product.price.toFixed(2)}</p>
         <p className="text-ink/60 leading-relaxed mb-8">{product.description}</p>
 
         <div className="mb-6">

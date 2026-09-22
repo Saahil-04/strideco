@@ -57,7 +57,7 @@ export default function AdminDashboard() {
         navigate("/admin/login");
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
 
   const handleSave = async (payload) => {

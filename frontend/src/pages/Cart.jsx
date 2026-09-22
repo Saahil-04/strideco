@@ -58,7 +58,7 @@ export default function Cart() {
               <div className="flex-1">
                 <p className="font-medium text-ink">{item.name}</p>
                 <p className="text-sm text-ink/50">Size {item.size}</p>
-                <p className="text-sm text-ink/70 mt-1">${item.price.toFixed(2)}</p>
+                <p className="text-sm text-ink/70 mt-1">₹{item.price.toFixed(2)}</p>
               </div>
               <div className="flex flex-col items-end justify-between">
                 <button onClick={() => removeItem(item.key)}>
@@ -86,7 +86,7 @@ export default function Cart() {
         <div className="border border-black/5 rounded-2xl p-5 sticky top-24">
           <div className="flex justify-between text-sm mb-2">
             <span className="text-ink/60">Subtotal</span>
-            <span className="font-medium text-ink">${subtotal.toFixed(2)}</span>
+            <span className="font-medium text-ink">₹{subtotal.toFixed(2)}</span>
           </div>
           <p className="text-xs text-ink/40 mb-4">Shipping and taxes calculated at a real checkout.</p>
 
